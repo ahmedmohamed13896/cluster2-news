@@ -27,14 +27,14 @@ export class ThemeService {
   }
 
   private getInitialTheme(): boolean {
-    // Check localStorage first, then system preference
+    // Check localStorage first
     const savedTheme = localStorage.getItem('cluster2-theme');
     if (savedTheme !== null) {
       return savedTheme === 'dark';
     }
 
-    // Fall back to system preference
-    return window.matchMedia('(prefers-color-scheme: dark)').matches;
+    // Default to light mode (false)
+    return false;
   }
 
   private applyTheme(isDark: boolean): void {
