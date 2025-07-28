@@ -1,0 +1,64 @@
+.archive {
+  .section-title {
+    color: var(--bs-primary);
+    border-bottom: 2px solid var(--bs-warning);
+    padding-bottom: 0.5rem;
+  }
+
+  .archive-card {
+    transition: all 0.3s ease;
+    animation: fadeInUp 0.6s ease-out;
+    border-left: 5px solid var(--bs-warning);
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .news-link {
+      text-decoration: none;
+      color: inherit;
+      transition: color 0.2s ease;
+
+      &:hover {
+        color: var(--bs-primary);
+      }
+    }
+
+    .btn {
+      transition: all 0.2s ease;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Stagger animation for multiple cards
+.archive-card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.archive-card:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.archive-card:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.archive-card:nth-child(4) {
+  animation-delay: 0.4s;
+}
+.archive-card:nth-child(5) {
+  animation-delay: 0.5s;
+}

@@ -5,6 +5,7 @@ A modern, responsive news management application built with Angular 19 for Clust
 ## 🚀 Features
 
 ### Core Features
+
 - **News Dashboard**: View and search through all active news articles
 - **Add News**: Create new articles with title, content, summary, tags, and publish date
 - **Archive System**: Archive articles and restore them from the archive
@@ -13,6 +14,7 @@ A modern, responsive news management application built with Angular 19 for Clust
 - **Dark Mode**: Toggle between light and dark themes
 
 ### Technical Features
+
 - **Angular 19**: Latest Angular framework with modern features
 - **Bootstrap 5**: Responsive UI framework
 - **Signal-based State Management**: Reactive state management using Angular signals
@@ -39,17 +41,20 @@ A modern, responsive news management application built with Angular 19 for Clust
 ### Installation
 
 1. **Clone the repository**
+
    ```bash
    git clone <repository-url>
    cd cluster2-news
    ```
 
 2. **Install dependencies**
+
    ```bash
    npm install
    ```
 
 3. **Start the development server**
+
    ```bash
    npm start
    ```
@@ -102,75 +107,40 @@ src/
 ## 🎨 Features in Detail
 
 ### News Dashboard
+
 - **Search**: Real-time search across title, content, summary, and tags
 - **Archive**: One-click archive functionality for each article
 - **Responsive**: Optimized layout for all device sizes
 - **Loading States**: Visual feedback during data loading
 
 ### Add News Form
+
 - **Validation**: Real-time form validation with visual feedback
 - **Responsive**: Two-column layout on desktop, single column on mobile
 - **Tags**: Comma-separated tag input with placeholder guidance
 - **Date Picker**: Native date input for publish date
 
 ### Archive Management
+
 - **Restore**: Unarchive articles back to active status
 - **View**: Direct links to view archived articles
 - **Visual Indicators**: Warning-colored borders for archived items
 - **Empty State**: Helpful message when no archived articles exist
 
 ### Dark Mode
+
 - **Toggle**: Easy switch between light and dark themes
 - **Persistent**: Theme preference is maintained
 - **Comprehensive**: All components support dark mode
 
-## 🔧 CMS Integration (Optional)
+## 🔧 Data Storage
 
-### Current Implementation
-The application currently uses in-memory data storage for demonstration purposes. All data is stored locally and persists during the session.
-
-### CMS Integration Options
-
-#### Option 1: Strapi CMS
-```bash
-# Install Strapi
-npx create-strapi-app@latest cluster2-cms --quickstart
-
-# Configure content types for news articles
-# Update news-data.service.ts to use Strapi API
-```
-
-#### Option 2: Contentful
-```bash
-# Install Contentful SDK
-npm install contentful
-
-# Configure environment variables
-CONTENTFUL_SPACE_ID=your_space_id
-CONTENTFUL_ACCESS_TOKEN=your_access_token
-```
-
-#### Option 3: Firebase Firestore
-```bash
-# Install Firebase
-npm install firebase
-
-# Configure Firebase in environment files
-# Update services to use Firestore
-```
-
-### Implementation Steps for CMS
-1. **Choose a CMS** (Strapi, Contentful, Firebase, etc.)
-2. **Set up content models** for news articles
-3. **Update `news-data.service.ts`** to use CMS API
-4. **Add environment configuration** for API keys
-5. **Implement authentication** if required
-6. **Add image upload** functionality
-7. **Set up deployment** for both frontend and CMS
+This application currently uses in-memory data storage for demonstration purposes. All news data is stored locally in the browser session and will reset when the page is refreshed. No external CMS or backend is required.
 
 ## 🎯 Future Enhancements
 
 ### Planned Features
+
 - [ ] **User Authentication**: Login/logout functionality
 - [ ] **Image Upload**: Support for article images
 - [ ] **Rich Text Editor**: WYSIWYG content editing
@@ -181,6 +151,7 @@ npm install firebase
 - [ ] **API Documentation**: Swagger/OpenAPI docs
 
 ### Technical Improvements
+
 - [ ] **Unit Tests**: Comprehensive test coverage
 - [ ] **E2E Tests**: End-to-end testing with Cypress
 - [ ] **Performance**: Lazy loading and code splitting
@@ -193,6 +164,7 @@ npm install firebase
 ### Common Issues
 
 **Build Errors**
+
 ```bash
 # Clear cache and reinstall
 rm -rf node_modules package-lock.json
@@ -200,12 +172,14 @@ npm install
 ```
 
 **Styling Issues**
+
 ```bash
 # Rebuild styles
 npm run build -- --configuration development
 ```
 
 **Routing Issues**
+
 - Ensure all routes are properly configured in `app.routes.ts`
 - Check that components are properly exported
 
@@ -221,9 +195,41 @@ npm run build -- --configuration development
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
+## 🚀 Deployment: Host Your Demo on Netlify
+
+You can easily deploy this Angular project for free using Netlify:
+
+### 1. Build the Project
+
+```bash
+npm run build
+# The output will be in the `dist/cluster2-news/` folder
+```
+
+### 2. Deploy to Netlify
+
+#### Option A: Drag & Drop
+
+1. Go to [https://app.netlify.com/drop](https://app.netlify.com/drop)
+2. Drag the contents of the `dist/cluster2-news/` folder into the drop area
+3. Netlify will instantly host your site and give you a live link
+
+#### Option B: Connect Your GitHub Repo
+
+1. Push your code to GitHub (see instructions above)
+2. Go to [https://app.netlify.com/](https://app.netlify.com/)
+3. Click **Add new site** > **Import an existing project**
+4. Connect your GitHub account and select your repository
+5. Set the build command to `npm run build` and the publish directory to `dist/cluster2-news`
+6. Click **Deploy site**
+7. Netlify will build and host your Angular app, providing a public demo link
+
+---
+
 ## 🤝 Support
 
 For support and questions:
+
 - Create an issue in the repository
 - Contact the development team
 - Check the documentation for common solutions
