@@ -1,1 +1,427 @@
-/* You can add global styles to this file, and also import other style files */
+@use "sass:color";
+@use "styles/variables" as *;
+
+// ============================================================================
+// CSS CUSTOM PROPERTIES FOR THEMING
+// ============================================================================
+
+:root {
+  // Cluster2 Brand Colors
+  --cluster2-primary: #{$cluster2-primary};
+  --cluster2-secondary: #{$cluster2-secondary};
+  --cluster2-accent: #{$cluster2-accent};
+  --cluster2-success: #{$cluster2-success};
+  --cluster2-warning: #{$cluster2-warning};
+  --cluster2-danger: #{$cluster2-danger};
+  --cluster2-info: #{$cluster2-info};
+
+  // Light Theme (Default)
+  --bg-primary: #{$light-bg-primary};
+  --bg-secondary: #{$light-bg-secondary};
+  --bg-tertiary: #{$light-bg-tertiary};
+  --text-primary: #{$light-text-primary};
+  --text-secondary: #{$light-text-secondary};
+  --text-muted: #{$light-text-muted};
+  --border-color: #{$light-border};
+  --border-focus: #{$light-border-focus};
+  --shadow: #{$shadow-light};
+  --shadow-card: #{$shadow-card-light};
+
+  // Semantic Colors
+  --success: #{$success-light};
+  --warning: #{$warning-light};
+  --danger: #{$danger-light};
+  --info: #{$info-light};
+
+  // Transitions
+  --transition-fast: #{$transition-fast};
+  --transition-base: #{$transition-base};
+  --transition-slow: #{$transition-slow};
+}
+
+// Dark Theme
+[data-theme="dark"] {
+  --bg-primary: #{$dark-bg-primary};
+  --bg-secondary: #{$dark-bg-secondary};
+  --bg-tertiary: #{$dark-bg-tertiary};
+  --text-primary: #{$dark-text-primary};
+  --text-secondary: #{$dark-text-secondary};
+  --text-muted: #{$dark-text-muted};
+  --border-color: #{$dark-border};
+  --border-focus: #{$dark-border-focus};
+  --shadow: #{$shadow-dark};
+  --shadow-card: #{$shadow-card-dark};
+
+  // Semantic Colors for Dark Mode
+  --success: #{$success-dark};
+  --warning: #{$warning-dark};
+  --danger: #{$danger-dark};
+  --info: #{$info-dark};
+}
+
+// ============================================================================
+// BASE STYLES
+// ============================================================================
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color var(--transition-base), color var(--transition-base);
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  transition: background-color var(--transition-base), color var(--transition-base);
+}
+
+// ============================================================================
+// TYPOGRAPHY
+// ============================================================================
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-primary);
+  font-weight: $font-weight-semibold;
+  margin-bottom: $spacing-md;
+  transition: color var(--transition-base);
+}
+
+h1 { font-size: $font-size-xxl; }
+h2 { font-size: $font-size-xl; }
+h3 { font-size: $font-size-lg; }
+h4 { font-size: $font-size-base; }
+h5 { font-size: $font-size-sm; }
+h6 { font-size: $font-size-xs; }
+
+p {
+  color: var(--text-secondary);
+  margin-bottom: $spacing-md;
+  transition: color var(--transition-base);
+}
+
+a {
+  color: var(--cluster2-accent);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+
+  &:hover {
+    color: color.adjust($cluster2-accent, $lightness: 10%);
+  }
+}
+
+// ============================================================================
+// LAYOUT COMPONENTS
+// ============================================================================
+
+// Header
+header {
+  background-color: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: var(--shadow);
+  transition: background-color var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base);
+
+  h1 {
+    color: var(--cluster2-primary);
+    font-weight: $font-weight-bold;
+    margin: 0;
+  }
+
+  .text-muted {
+    color: var(--text-muted);
+  }
+}
+
+// Navigation
+.navbar {
+  background-color: var(--bg-secondary);
+  border-top: 1px solid var(--border-color);
+  transition: background-color var(--transition-base), border-color var(--transition-base);
+
+  .nav-link {
+    color: var(--text-secondary);
+    font-weight: $font-weight-medium;
+    transition: color var(--transition-fast);
+
+    &:hover, &.active {
+      color: var(--cluster2-accent);
+    }
+  }
+
+  .navbar-toggler {
+    border-color: var(--border-color);
+    transition: border-color var(--transition-fast);
+
+    &:focus {
+      border-color: var(--border-focus);
+      box-shadow: 0 0 0 0.2rem color.change($cluster2-accent, $alpha: 0.25);
+    }
+  }
+}
+
+// Main Content
+main {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: calc(100vh - 200px);
+  padding: $spacing-xl 0;
+  transition: background-color var(--transition-base), color var(--transition-base);
+}
+
+// ============================================================================
+// COMPONENT STYLES
+// ============================================================================
+
+// Cards
+.card {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: $border-radius-lg;
+  box-shadow: var(--shadow-card);
+  color: var(--text-primary);
+  transition: background-color var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base);
+
+  .card-body {
+    background-color: var(--bg-secondary);
+  }
+
+  .card-title {
+    color: var(--text-primary);
+  }
+
+  .card-text {
+    color: var(--text-secondary);
+  }
+}
+
+// Buttons
+.btn {
+  border-radius: $border-radius-md;
+  font-weight: $font-weight-medium;
+  transition: all var(--transition-fast);
+
+  &:focus {
+    box-shadow: 0 0 0 0.2rem color.change($cluster2-accent, $alpha: 0.25);
+  }
+}
+
+.btn-outline-dark {
+  border-color: var(--cluster2-accent);
+  color: var(--cluster2-accent);
+
+  &:hover {
+    background-color: var(--cluster2-accent);
+    color: var(--bg-primary);
+  }
+}
+
+.btn-outline-secondary {
+  border-color: var(--text-secondary);
+  color: var(--text-secondary);
+
+  &:hover {
+    background-color: var(--text-secondary);
+    color: var(--bg-primary);
+  }
+}
+
+.btn-outline-primary {
+  border-color: var(--cluster2-primary);
+  color: var(--cluster2-primary);
+
+  &:hover {
+    background-color: var(--cluster2-primary);
+    color: white;
+  }
+}
+
+// Form Controls
+.form-control, .form-select {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: $border-radius-md;
+  color: var(--text-primary);
+  transition: background-color var(--transition-base), border-color var(--transition-base), color var(--transition-base);
+
+  &:focus {
+    background-color: var(--bg-secondary);
+    border-color: var(--border-focus);
+    box-shadow: 0 0 0 0.2rem color.change($cluster2-accent, $alpha: 0.25);
+    color: var(--text-primary);
+  }
+
+  &::placeholder {
+    color: var(--text-muted);
+  }
+}
+
+// Alerts
+.alert {
+  border-radius: $border-radius-md;
+  border: 1px solid transparent;
+  transition: background-color var(--transition-base), border-color var(--transition-base);
+
+  &.alert-success {
+    background-color: color.change($success-light, $alpha: 0.1);
+    border-color: var(--success);
+    color: var(--success);
+  }
+
+  &.alert-danger {
+    background-color: color.change($danger-light, $alpha: 0.1);
+    border-color: var(--danger);
+    color: var(--danger);
+  }
+
+  &.alert-warning {
+    background-color: color.change($warning-light, $alpha: 0.1);
+    border-color: var(--warning);
+    color: var(--warning);
+  }
+
+  &.alert-info {
+    background-color: color.change($info-light, $alpha: 0.1);
+    border-color: var(--info);
+    color: var(--info);
+  }
+}
+
+// Badges
+.badge {
+  border-radius: $border-radius-sm;
+  font-weight: $font-weight-medium;
+
+  &.bg-primary {
+    background-color: var(--cluster2-accent) !important;
+    color: var(--bg-primary) !important;
+  }
+
+  &.bg-secondary {
+    background-color: var(--text-secondary) !important;
+    color: var(--bg-primary) !important;
+  }
+}
+
+// Modals
+.modal-content {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: $border-radius-lg;
+  color: var(--text-primary);
+  transition: background-color var(--transition-base), border-color var(--transition-base), color var(--transition-base);
+}
+
+.modal-header {
+  border-bottom: 1px solid var(--border-color);
+}
+
+.modal-footer {
+  border-top: 1px solid var(--border-color);
+}
+
+// Toasts
+.toast {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: $border-radius-md;
+  box-shadow: var(--shadow-card);
+  color: var(--text-primary);
+  transition: background-color var(--transition-base), border-color var(--transition-base), color var(--transition-base);
+}
+
+.toast-header {
+  background-color: var(--bg-tertiary);
+  border-bottom: 1px solid var(--border-color);
+}
+
+// Close Button
+.btn-close {
+  filter: var(--text-primary) brightness(0) invert(1);
+  transition: filter var(--transition-fast);
+}
+
+// ============================================================================
+// UTILITY CLASSES
+// ============================================================================
+
+.text-muted {
+  color: var(--text-muted) !important;
+}
+
+.section-title {
+  color: var(--cluster2-accent);
+  font-weight: $font-weight-bold;
+}
+
+.summary-box {
+  background-color: var(--bg-tertiary);
+  border-left: 4px solid var(--cluster2-accent);
+  border-radius: $border-radius-md;
+  padding: $spacing-lg;
+  transition: background-color var(--transition-base), border-color var(--transition-base);
+}
+
+// ============================================================================
+// ANIMATIONS
+// ============================================================================
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.slide-in-right {
+  animation: slideInRight 0.3s ease-out;
+}
+
+// ============================================================================
+// RESPONSIVE DESIGN
+// ============================================================================
+
+@media (max-width: $breakpoint-md) {
+  main {
+    padding: $spacing-lg 0;
+  }
+
+  .card {
+    margin-bottom: $spacing-md;
+  }
+}
+
+@media (max-width: $breakpoint-sm) {
+  header {
+    padding: $spacing-md 0;
+  }
+
+  .navbar {
+    padding: $spacing-sm 0;
+  }
+}

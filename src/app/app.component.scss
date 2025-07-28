@@ -1,0 +1,116 @@
+@use "sass:color";
+@use "variables" as *;
+
+:host {
+  display: block;
+}
+
+// Header
+header {
+  background-color: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: var(--shadow);
+  transition: background-color var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base);
+
+  h1 {
+    color: var(--cluster2-primary);
+    font-weight: $font-weight-bold;
+    margin: 0;
+  }
+
+  .text-muted {
+    color: var(--text-muted);
+  }
+
+  .btn-outline-dark {
+    border-color: var(--cluster2-accent);
+    color: var(--cluster2-accent);
+    transition: all var(--transition-fast);
+
+    &:hover {
+      background-color: var(--cluster2-accent);
+      color: var(--bg-primary);
+    }
+  }
+
+  .btn-outline-secondary {
+    border-color: var(--text-secondary);
+    color: var(--text-secondary);
+    transition: all var(--transition-fast);
+
+    &:hover {
+      background-color: var(--text-secondary);
+      color: var(--bg-primary);
+    }
+  }
+}
+
+// Navigation
+nav.navbar {
+  background-color: var(--bg-secondary);
+  border-top: 1px solid var(--border-color);
+  transition: background-color var(--transition-base), border-color var(--transition-base);
+
+  .nav-link {
+    color: var(--text-secondary);
+    font-weight: $font-weight-medium;
+    transition: color var(--transition-fast);
+
+    &.active,
+    &:hover {
+      color: var(--cluster2-accent);
+    }
+  }
+
+  .navbar-toggler {
+    border-color: var(--border-color);
+    transition: border-color var(--transition-fast);
+
+    &:focus {
+      border-color: var(--border-focus);
+      box-shadow: 0 0 0 0.2rem color.change($cluster2-accent, $alpha: 0.25);
+    }
+
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 0.5%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
+  }
+}
+
+// Dark mode specific navbar icon
+[data-theme="dark"] nav.navbar .navbar-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.7%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+// Main Content
+main {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: calc(100vh - 200px);
+  padding: $spacing-xl 0;
+  transition: background-color var(--transition-base), color var(--transition-base);
+}
+
+// Responsive adjustments
+@media (max-width: $breakpoint-md) {
+  header {
+    padding: $spacing-md 0;
+  }
+
+  nav.navbar {
+    padding: $spacing-sm 0;
+  }
+
+  main {
+    padding: $spacing-lg 0;
+  }
+}
+
+@media (max-width: $breakpoint-sm) {
+  header {
+    .container {
+      flex-direction: column;
+      gap: $spacing-sm;
+    }
+  }
+}

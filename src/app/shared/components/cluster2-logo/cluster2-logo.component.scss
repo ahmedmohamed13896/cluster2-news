@@ -1,0 +1,183 @@
+.cluster2-logo {
+  display: inline-flex;
+  align-items: center;
+  font-family: "Arial", sans-serif;
+  font-weight: bold;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logo-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.logo-text-container {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+.logo-title {
+  font-size: 1.2em;
+  font-weight: 700;
+  color: var(--cluster2-primary, #003366);
+}
+
+.logo-subtitle {
+  font-size: 0.8em;
+  font-weight: 500;
+  color: var(--cluster2-secondary, #666);
+}
+
+/* Size variants */
+.small .logo-img {
+  width: 24px;
+  height: 24px;
+}
+
+.small .logo-title {
+  font-size: 1em;
+}
+
+.small .logo-subtitle {
+  font-size: 0.7em;
+}
+
+.medium .logo-img {
+  width: 32px;
+  height: 32px;
+}
+
+.medium .logo-title {
+  font-size: 1.2em;
+}
+
+.medium .logo-subtitle {
+  font-size: 0.8em;
+}
+
+.large .logo-img {
+  width: 48px;
+  height: 48px;
+}
+
+.large .logo-title {
+  font-size: 1.4em;
+}
+
+.large .logo-subtitle {
+  font-size: 0.9em;
+}
+.small {
+  .logo-icon {
+    width: 24px;
+    height: 24px;
+  }
+  .logo-text-container {
+    .logo-title {
+      font-size: 1em;
+    }
+    .logo-subtitle {
+      font-size: 0.7em;
+    }
+  }
+}
+
+.medium {
+  .logo-icon {
+    width: 32px;
+    height: 32px;
+  }
+  .logo-text-container {
+    .logo-title {
+      font-size: 1.2em;
+    }
+    .logo-subtitle {
+      font-size: 0.8em;
+    }
+  }
+}
+
+.large {
+  .logo-icon {
+    width: 48px;
+    height: 48px;
+  }
+  .logo-text-container {
+    .logo-title {
+      font-size: 1.4em;
+    }
+    .logo-subtitle {
+      font-size: 0.9em;
+    }
+  }
+}
+
+.large .logo-svg {
+  width: 50px;
+  height: 50px;
+}
+
+.small .logo-title {
+  font-size: 1em;
+}
+
+.small .logo-subtitle {
+  font-size: 0.7em;
+}
+
+.large .logo-title {
+  font-size: 1.4em;
+}
+
+.large .logo-subtitle {
+  font-size: 0.9em;
+}
+
+/* Dark mode support */
+.dark-mode .logo-svg {
+  color: var(--cluster2-accent, #ffcc00);
+}
+
+.dark-mode .logo-title {
+  color: var(--cluster2-accent, #ffcc00);
+}
+
+.dark-mode .logo-subtitle {
+  color: var(--cluster2-text-light, #f8f9fa);
+}
+
+/* Animation */
+.logo-svg {
+  transition: all 0.3s ease;
+}
+
+.cluster2-logo:hover .logo-svg {
+  transform: scale(1.05);
+}
+
+.plane-path {
+  animation: fly 3s ease-in-out infinite;
+}
+
+@keyframes fly {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-2px);
+  }
+}

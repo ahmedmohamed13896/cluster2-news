@@ -1,0 +1,28 @@
+<div class="notification-container">
+  <div
+    *ngFor="let notification of notifications()"
+    class="toast show"
+    [class]="getToastClass(notification.type)"
+    role="alert"
+    aria-live="assertive"
+    aria-atomic="true"
+  >
+    <div class="toast-header">
+      <div class="d-flex align-items-center">
+        <i [class]="getIconClass(notification.type)" class="me-2"></i>
+        <strong class="me-auto">{{
+          notification.title || getDefaultTitle(notification.type)
+        }}</strong>
+      </div>
+      <button
+        type="button"
+        class="btn-close"
+        (click)="removeNotification(notification.id)"
+        aria-label="Close"
+      ></button>
+    </div>
+    <div class="toast-body">
+      {{ notification.message }}
+    </div>
+  </div>
+</div>

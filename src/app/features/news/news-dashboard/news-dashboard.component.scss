@@ -1,0 +1,135 @@
+@use "sass:color";
+@use "variables" as *;
+
+.dashboard {
+  padding-top: 1rem;
+
+  .section-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: $primary-color;
+    border-bottom: 2px solid $accent-color;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    transition: color 0.3s ease;
+  }
+
+  .search-input {
+    border: 2px solid $primary-color;
+    border-radius: 0.5rem;
+    padding: 0.6rem 1rem;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+
+    &:focus {
+      outline: none;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      border-color: $accent-color;
+    }
+  }
+
+  .news-card {
+    animation: fadeInUp 0.6s ease-out;
+    border: 1px solid $border-color;
+    border-left: 5px solid $primary-color;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .card-title {
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      transition: color 0.3s ease;
+    }
+
+    .news-link {
+      text-decoration: none;
+      color: inherit;
+      transition: color 0.2s ease;
+
+      &:hover {
+        color: var(--bs-primary);
+      }
+    }
+
+    .card-subtitle {
+      margin-top: 0.75rem;
+      transition: color 0.3s ease;
+    }
+
+    .btn {
+      transition: all 0.2s ease;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+  }
+
+  // Dark mode specific styles
+  .theme-dark & {
+    .search-input {
+      &:focus {
+        box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+      }
+    }
+
+    .news-card {
+      &:hover {
+        box-shadow: 0 8px 25px rgba(255, 255, 255, 0.1);
+      }
+    }
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Stagger animation for multiple cards
+.news-card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.news-card:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.news-card:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.news-card:nth-child(4) {
+  animation-delay: 0.4s;
+}
+.news-card:nth-child(5) {
+  animation-delay: 0.5s;
+}
+
+// Dark mode styles
+.dark-mode {
+  .dashboard {
+    .section-title {
+      color: var(--bs-warning);
+    }
+
+    .news-card {
+      border-left-color: var(--bs-warning);
+    }
+
+    .search-input {
+      &::placeholder {
+        color: rgba(255, 255, 255, 0.5);
+      }
+    }
+  }
+}

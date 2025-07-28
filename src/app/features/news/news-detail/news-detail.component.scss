@@ -1,0 +1,144 @@
+@use "sass:color";
+@use "variables" as *;
+
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+section {
+  animation: fadeSlideIn 0.4s ease-out;
+  max-width: 800px;
+  margin: auto;
+  padding: 2rem;
+  border: 1px solid $border-color;
+  border-radius: 0.5rem;
+  box-shadow: $card-shadow;
+  transition: background-color 0.3s ease, border-color 0.3s ease,
+    color 0.3s ease;
+
+  h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: $primary-color;
+    margin-bottom: 0.5rem;
+    transition: color 0.3s ease;
+  }
+
+  .text-muted {
+    color: color.adjust($primary-color, $lightness: 30%);
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+  }
+
+  em {
+    font-style: italic;
+    display: block;
+    margin-bottom: 1rem;
+    transition: color 0.3s ease;
+  }
+
+  hr {
+    border-top: 1px solid $border-color;
+    margin: 1.5rem 0;
+    transition: border-color 0.3s ease;
+  }
+
+  .badge {
+    font-size: 0.85rem;
+    padding: 0.4em 0.6em;
+    background-color: $accent-color;
+    color: $text-dark;
+    font-weight: 500;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  .btn-outline-secondary {
+    border-color: $primary-color;
+    color: $primary-color;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: $primary-color;
+      color: white;
+    }
+  }
+}
+
+// Error state
+.alert-danger {
+  background-color: color.adjust($accent-color, $lightness: 35%);
+  color: $primary-color;
+  border-color: $accent-color;
+  transition: background-color 0.3s ease, color 0.3s ease;
+
+  .btn-link {
+    color: color.adjust($primary-color, $lightness: -10%);
+    font-weight: 500;
+    transition: color 0.3s ease;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+// Dark mode styles
+body.dark-mode {
+  section {
+    background-color: color.adjust($bg-dark, $lightness: 3%);
+    border-color: color.adjust($bg-dark, $lightness: 15%);
+    color: $text-light;
+
+    h2 {
+      color: $accent-color;
+    }
+
+    .text-muted {
+      color: color.adjust($text-light, $lightness: -30%);
+    }
+
+    em {
+      color: color.adjust($text-light, $lightness: -10%);
+    }
+
+    hr {
+      border-top-color: color.adjust($bg-dark, $lightness: 20%);
+    }
+
+    .badge {
+      background-color: $accent-color;
+      color: $text-dark;
+    }
+
+    .btn-outline-secondary {
+      border-color: color.adjust($text-light, $lightness: -20%);
+      color: color.adjust($text-light, $lightness: -10%);
+
+      &:hover {
+        background-color: color.adjust($text-light, $lightness: -20%);
+        color: $bg-dark;
+      }
+    }
+  }
+
+  .alert-danger {
+    background-color: color.adjust($danger-color, $lightness: 15%);
+    color: $text-light;
+    border-color: $danger-color;
+
+    .btn-link {
+      color: color.adjust($text-light, $lightness: -10%);
+
+      &:hover {
+        color: $accent-color;
+      }
+    }
+  }
+}

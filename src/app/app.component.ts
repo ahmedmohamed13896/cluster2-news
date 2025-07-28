@@ -1,12 +1,25 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { ThemeService } from './core/theme.service';
+import { NotificationToastComponent } from './shared/components/notification-toast/notification-toast.component';
+import { Cluster2LogoComponent } from './shared/components/cluster2-logo/cluster2-logo.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  standalone: true,
+  imports: [RouterModule, NotificationToastComponent, Cluster2LogoComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'cluster2-news';
+  private themeService = inject(ThemeService);
+
+  // Expose the theme service signal for template binding
+  get isDark() {
+    return this.themeService.isDarkMode();
+  }
+
+  toggleDarkMode() {
+    this.themeService.toggleDarkMode();
+  }
 }

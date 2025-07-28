@@ -1,0 +1,184 @@
+@use "sass:color";
+@use "variables" as *;
+
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.form-section {
+  animation: fadeInUp 0.6s ease-out;
+  max-width: 700px;
+  margin: auto;
+  padding: 2rem;
+  background-color: $bg-light;
+  border: 1px solid $border-color;
+  border-radius: 0.75rem;
+  box-shadow: $card-shadow;
+  transition: background-color 0.3s ease, border-color 0.3s ease,
+    color 0.3s ease;
+
+  h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: $primary-color;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid $accent-color;
+    padding-bottom: 0.5rem;
+    transition: color 0.3s ease;
+    animation: fadeInDown 0.8s ease-out;
+  }
+
+  .form-label {
+    font-weight: 600;
+    color: $text-dark;
+    transition: color 0.3s ease;
+  }
+
+  .form-control {
+    border: 2px solid $border-color;
+    border-radius: 0.5rem;
+    padding: 0.6rem 0.9rem;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+
+    &:focus {
+      border-color: $primary-color;
+      box-shadow: 0 0 0 0.2rem color.change($primary-color, $alpha: 0.2);
+      transform: translateY(-2px);
+    }
+
+    &.is-invalid {
+      border-color: $danger-color;
+      box-shadow: 0 0 0 0.2rem color.change($danger-color, $alpha: 0.2);
+      animation: shake 0.5s ease-in-out;
+    }
+  }
+
+  .invalid-feedback {
+    color: $danger-color;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+    transition: color 0.3s ease;
+    animation: fadeIn 0.3s ease-in;
+  }
+
+  .btn-primary {
+    background-color: $primary-color;
+    border-color: $primary-color;
+    font-weight: 600;
+    padding: 0.6rem 1.2rem;
+    transition: all 0.3s ease;
+
+    &:hover:not(:disabled) {
+      background-color: color.adjust($primary-color, $lightness: -5%);
+      border-color: color.adjust($primary-color, $lightness: -5%);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    &:disabled {
+      background-color: color.adjust($primary-color, $lightness: 25%);
+      border-color: color.adjust($primary-color, $lightness: 25%);
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+// Dark mode styles
+body.dark-mode {
+  .form-section {
+    background-color: color.adjust($bg-dark, $lightness: 3%);
+    border-color: color.adjust($bg-dark, $lightness: 15%);
+    color: $text-light;
+
+    h2 {
+      color: $accent-color;
+    }
+
+    .form-label {
+      color: $text-light;
+    }
+
+    .form-control {
+      background-color: color.adjust($bg-dark, $lightness: 8%);
+      color: $text-light;
+      border-color: color.adjust($bg-dark, $lightness: 20%);
+
+      &:focus {
+        border-color: $accent-color;
+        box-shadow: 0 0 0 0.2rem color.change($accent-color, $alpha: 0.2);
+      }
+
+      &.is-invalid {
+        border-color: $danger-color;
+        box-shadow: 0 0 0 0.2rem color.change($danger-color, $alpha: 0.2);
+      }
+    }
+
+    .invalid-feedback {
+      color: color.adjust($danger-color, $lightness: 15%);
+    }
+
+    .btn-primary {
+      background-color: $accent-color;
+      border-color: $accent-color;
+      color: $text-dark;
+
+      &:hover {
+        background-color: color.adjust($accent-color, $lightness: -5%);
+        border-color: color.adjust($accent-color, $lightness: -5%);
+      }
+
+      &:disabled {
+        background-color: color.adjust($accent-color, $lightness: 25%);
+        border-color: color.adjust($accent-color, $lightness: 25%);
+        color: color.adjust($text-dark, $lightness: -30%);
+      }
+    }
+  }
+}
